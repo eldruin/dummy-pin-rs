@@ -14,7 +14,10 @@ edition = "2018"
 
 [dependencies]
 embedded-hal = { version = "0.2.3", features=["unproven"] }
-linux-embedded-hal = "0.3"
+linux-embedded-hal = { version = "0.3", optional = true }
+
+[features]
+examples = ["linux-embedded-hal"]
 
 [profile.release]
 lto = true
