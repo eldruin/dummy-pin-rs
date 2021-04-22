@@ -141,7 +141,7 @@ jobs:
         if: contains(matrix.TARGET, 'x86_64')
         with:
           command: build
-          args: --target=${{ matrix.TARGET }} --examples
+          args: --target=${{ matrix.TARGET }} --examples --features examples
 
   coverage:
     name: Coverage
