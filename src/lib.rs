@@ -98,7 +98,7 @@
 //! ```
 //!
 
-#![doc(html_root_url = "https://docs.rs/dummy-pin/0.1.0")]
+#![doc(html_root_url = "https://docs.rs/dummy-pin/0.1.1")]
 #![deny(unsafe_code, missing_docs)]
 #![no_std]
 
