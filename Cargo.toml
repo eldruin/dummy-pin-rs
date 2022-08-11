@@ -1,6 +1,6 @@
 [package]
 name = "dummy-pin"
-version = "0.1.1" # remember to update html_root_url
+version = "0.2.0-alpha.1"
 authors = ["Diego Barrios Romero <eldruin@gmail.com>"]
 repository = "https://github.com/eldruin/dummy-pin-rs"
 license = "MIT OR Apache-2.0"
@@ -13,10 +13,10 @@ documentation = "https://docs.rs/dummy-pin"
 edition = "2018"
 
 [dependencies]
-embedded-hal = { version = "0.2.3", features=["unproven"] }
+embedded-hal = "=1.0.0-alpha.8"
 
 [dev-dependencies]
-linux-embedded-hal = "0.3"
+linux-embedded-hal = "=0.4.0-alpha.3"
 
 [profile.release]
 lto = true

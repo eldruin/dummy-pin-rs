@@ -2,7 +2,7 @@
 
 [![crates.io](https://img.shields.io/crates/v/dummy-pin.svg)](https://crates.io/crates/dummy-pin)
 [![Docs](https://docs.rs/dummy-pin/badge.svg)](https://docs.rs/dummy-pin)
-![MSRV](https://img.shields.io/badge/rustc-1.35+-blue.svg)
+![MSRV](https://img.shields.io/badge/rustc-1.54+-blue.svg)
 [![Build Status](https://github.com/eldruin/dummy-pin-rs/workflows/Build/badge.svg)](https://github.com/eldruin/dummy-pin-rs/actions?query=workflow%3ABuild)
 [![Coverage Status](https://coveralls.io/repos/github/eldruin/dummy-pin-rs/badge.svg?branch=master)](https://coveralls.io/github/eldruin/dummy-pin-rs?branch=master)
 
@@ -19,8 +19,8 @@ This example demonstrates how the same driver can operate with either a real or 
 
 ```rust
 use dummy_pin::DummyPin;
-use embedded_hal::digital::v2::OutputPin;
-use linux_embedded_hal::Pin;
+use embedded_hal::digital::blocking::OutputPin;
+use linux_embedded_hal::SysfsPin;
 
 struct Driver<P> {
     output: P,
@@ -42,7 +42,7 @@ where
 
 fn main() {
     // The same driver can operate with either a real or a dummy pin.
-    let real_pin = Pin::new(25);
+    let real_pin = SysfsPin::new(25);
     let mut driver_with_real_pin = Driver::new(real_pin);
     driver_with_real_pin.do_something().unwrap();
 
@@ -59,7 +59,7 @@ For questions, issues, feature requests, and other changes, please file an
 
 ## Minimum Supported Rust Version (MSRV)
 
-This crate is guaranteed to compile on stable Rust 1.35 and up. It *might*
+This crate is guaranteed to compile on stable Rust 1.54 and up. It *might*
 compile with older versions but that may change in any new patch release.
 
 ## License

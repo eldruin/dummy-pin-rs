@@ -1,5 +1,8 @@
 use core::{convert::Infallible, marker::PhantomData};
-use embedded_hal::digital::v2::{InputPin, OutputPin, StatefulOutputPin, ToggleableOutputPin};
+use embedded_hal::digital::{
+    blocking::{InputPin, OutputPin, StatefulOutputPin, ToggleableOutputPin},
+    ErrorType,
+};
 
 /// Pin level marker types for usage of `DummyPin` as an `InputPin` or `StatefulOutputPin`.
 pub mod level {
@@ -37,9 +40,11 @@ impl DummyPin<level::High> {
     }
 }
 
-impl<L> OutputPin for DummyPin<L> {
+impl<L> ErrorType for DummyPin<L> {
     type Error = Infallible;
+}
 
+impl<L> OutputPin for DummyPin<L> {
     fn set_high(&mut self) -> Result<(), Self::Error> {
         Ok(())
     }
@@ -50,8 +55,6 @@ impl<L> OutputPin for DummyPin<L> {
 }
 
 impl InputPin for DummyPin<level::Low> {
-    type Error = Infallible;
-
     fn is_high(&self) -> Result<bool, Self::Error> {
         Ok(false)
     }
@@ -62,8 +65,6 @@ impl InputPin for DummyPin<level::Low> {
 }
 
 impl InputPin for DummyPin<level::High> {
-    type Error = Infallible;
-
     fn is_high(&self) -> Result<bool, Self::Error> {
         Ok(true)
     }
@@ -74,8 +75,6 @@ impl InputPin for DummyPin<level::High> {
 }
 
 impl<L> ToggleableOutputPin for DummyPin<L> {
-    type Error = Infallible;
-
     fn toggle(&mut self) -> Result<(), Self::Error> {
         Ok(())
     }

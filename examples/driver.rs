@@ -1,6 +1,6 @@
 use dummy_pin::DummyPin;
-use embedded_hal::digital::v2::OutputPin;
-use linux_embedded_hal::Pin;
+use embedded_hal::digital::blocking::OutputPin;
+use linux_embedded_hal::SysfsPin;
 
 struct Driver<P> {
     output: P,
@@ -22,7 +22,7 @@ where
 
 fn main() {
     // The same driver can operate with either a real or a dummy pin.
-    let real_pin = Pin::new(25);
+    let real_pin = SysfsPin::new(25);
     let mut driver_with_real_pin = Driver::new(real_pin);
     driver_with_real_pin.do_something().unwrap();
 

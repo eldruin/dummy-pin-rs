@@ -13,7 +13,7 @@
 //! A `DummyPin` does nothing and always returns the creation level when read.
 //!
 //! ```
-//! # use embedded_hal::digital::v2::{InputPin, OutputPin, StatefulOutputPin, ToggleableOutputPin};
+//! # use embedded_hal::digital::blocking::{InputPin, OutputPin, StatefulOutputPin, ToggleableOutputPin};
 //! use dummy_pin::DummyPin;
 //!
 //! // This pin will always read low.
@@ -38,8 +38,8 @@
 //!
 //! ```no_run
 //! use dummy_pin::DummyPin;
-//! use embedded_hal::digital::v2::OutputPin;
-//! use linux_embedded_hal::Pin;
+//! use embedded_hal::digital::blocking::OutputPin;
+//! use linux_embedded_hal::SysfsPin;
 //!
 //! struct Driver<P> {
 //!     output: P,
@@ -60,7 +60,7 @@
 //! }
 //!
 //! // The same driver can operate with either a real or a dummy pin.
-//! let real_pin = Pin::new(25);
+//! let real_pin = SysfsPin::new(25);
 //! let mut driver_with_real_pin = Driver::new(real_pin);
 //! driver_with_real_pin.do_something().unwrap();
 //!
@@ -73,7 +73,7 @@
 //! A `LastStateDummyPin` stores the last level set and returns it when read.
 //!
 //! ```
-//! # use embedded_hal::digital::v2::{InputPin, OutputPin, StatefulOutputPin, ToggleableOutputPin};
+//! # use embedded_hal::digital::blocking::{InputPin, OutputPin, StatefulOutputPin, ToggleableOutputPin};
 //! use dummy_pin::LastStateDummyPin;
 //!
 //! // Initially this pin reads low.
@@ -98,7 +98,6 @@
 //! ```
 //!
 
-#![doc(html_root_url = "https://docs.rs/dummy-pin/0.1.1")]
 #![deny(unsafe_code, missing_docs)]
 #![no_std]
 

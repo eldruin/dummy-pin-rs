@@ -1,5 +1,7 @@
 use dummy_pin::LastStateDummyPin;
-use embedded_hal::digital::v2::{InputPin, OutputPin, StatefulOutputPin, ToggleableOutputPin};
+use embedded_hal::digital::blocking::{
+    InputPin, OutputPin, StatefulOutputPin, ToggleableOutputPin,
+};
 
 #[test]
 fn can_create_low_and_read() {
