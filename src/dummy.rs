@@ -1,8 +1,5 @@
 use core::{convert::Infallible, marker::PhantomData};
-use embedded_hal::digital::{
-    blocking::{InputPin, OutputPin, StatefulOutputPin, ToggleableOutputPin},
-    ErrorType,
-};
+use embedded_hal::digital::{ErrorType, InputPin, OutputPin, StatefulOutputPin};
 
 /// Pin level marker types for usage of `DummyPin` as an `InputPin` or `StatefulOutputPin`.
 pub mod level {
@@ -55,47 +52,41 @@ impl<L> OutputPin for DummyPin<L> {
 }
 
 impl InputPin for DummyPin<level::Low> {
-    fn is_high(&self) -> Result<bool, Self::Error> {
+    fn is_high(&mut self) -> Result<bool, Self::Error> {
         Ok(false)
     }
 
-    fn is_low(&self) -> Result<bool, Self::Error> {
+    fn is_low(&mut self) -> Result<bool, Self::Error> {
         Ok(true)
     }
 }
 
 impl InputPin for DummyPin<level::High> {
-    fn is_high(&self) -> Result<bool, Self::Error> {
+    fn is_high(&mut self) -> Result<bool, Self::Error> {
         Ok(true)
     }
 
-    fn is_low(&self) -> Result<bool, Self::Error> {
+    fn is_low(&mut self) -> Result<bool, Self::Error> {
         Ok(false)
-    }
-}
-
-impl<L> ToggleableOutputPin for DummyPin<L> {
-    fn toggle(&mut self) -> Result<(), Self::Error> {
-        Ok(())
     }
 }
 
 impl StatefulOutputPin for DummyPin<level::Low> {
-    fn is_set_high(&self) -> Result<bool, Self::Error> {
+    fn is_set_high(&mut self) -> Result<bool, Self::Error> {
         Ok(false)
     }
 
-    fn is_set_low(&self) -> Result<bool, Self::Error> {
+    fn is_set_low(&mut self) -> Result<bool, Self::Error> {
         Ok(true)
     }
 }
 
 impl StatefulOutputPin for DummyPin<level::High> {
-    fn is_set_high(&self) -> Result<bool, Self::Error> {
+    fn is_set_high(&mut self) -> Result<bool, Self::Error> {
         Ok(true)
     }
 
-    fn is_set_low(&self) -> Result<bool, Self::Error> {
+    fn is_set_low(&mut self) -> Result<bool, Self::Error> {
         Ok(false)
     }
 }

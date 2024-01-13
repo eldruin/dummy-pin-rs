@@ -1,8 +1,5 @@
 use core::convert::Infallible;
-use embedded_hal::digital::{
-    blocking::{InputPin, OutputPin, StatefulOutputPin, ToggleableOutputPin},
-    ErrorType,
-};
+use embedded_hal::digital::{ErrorType, InputPin, OutputPin, StatefulOutputPin};
 
 /// Dummy pin implementation which stores the last level set to it and returns it when read.
 ///
@@ -48,28 +45,21 @@ impl OutputPin for LastStateDummyPin {
 }
 
 impl InputPin for LastStateDummyPin {
-    fn is_high(&self) -> Result<bool, Self::Error> {
+    fn is_high(&mut self) -> Result<bool, Self::Error> {
         Ok(self.is_high)
     }
 
-    fn is_low(&self) -> Result<bool, Self::Error> {
+    fn is_low(&mut self) -> Result<bool, Self::Error> {
         Ok(!self.is_high)
     }
 }
 
-impl ToggleableOutputPin for LastStateDummyPin {
-    fn toggle(&mut self) -> Result<(), Self::Error> {
-        self.is_high = !self.is_high;
-        Ok(())
-    }
-}
-
 impl StatefulOutputPin for LastStateDummyPin {
-    fn is_set_high(&self) -> Result<bool, Self::Error> {
+    fn is_set_high(&mut self) -> Result<bool, Self::Error> {
         Ok(self.is_high)
     }
 
-    fn is_set_low(&self) -> Result<bool, Self::Error> {
+    fn is_set_low(&mut self) -> Result<bool, Self::Error> {
         Ok(!self.is_high)
     }
 }

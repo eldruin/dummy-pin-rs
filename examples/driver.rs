@@ -1,5 +1,5 @@
 use dummy_pin::DummyPin;
-use embedded_hal::digital::blocking::OutputPin;
+use embedded_hal::digital::OutputPin;
 use linux_embedded_hal::SysfsPin;
 
 struct Driver<P> {

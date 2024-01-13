@@ -13,10 +13,10 @@ documentation = "https://docs.rs/dummy-pin"
 edition = "2018"
 
 [dependencies]
-embedded-hal = "=1.0.0-alpha.8"
+embedded-hal = "1.0.0"
 
 [dev-dependencies]
-linux-embedded-hal = "=0.4.0-alpha.3"
+linux-embedded-hal = "0.4"
 
 [profile.release]
 lto = true

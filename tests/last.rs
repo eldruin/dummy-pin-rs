@@ -1,25 +1,23 @@
 use dummy_pin::LastStateDummyPin;
-use embedded_hal::digital::blocking::{
-    InputPin, OutputPin, StatefulOutputPin, ToggleableOutputPin,
-};
+use embedded_hal::digital::{InputPin, OutputPin, StatefulOutputPin};
 
 #[test]
 fn can_create_low_and_read() {
-    let pin = LastStateDummyPin::new_low();
+    let mut pin = LastStateDummyPin::new_low();
     assert!(pin.is_low().unwrap());
     assert!(!pin.is_high().unwrap());
 }
 
 #[test]
 fn can_create_high_and_read() {
-    let pin = LastStateDummyPin::new_high();
+    let mut pin = LastStateDummyPin::new_high();
     assert!(!pin.is_low().unwrap());
     assert!(pin.is_high().unwrap());
 }
 
 #[test]
 fn can_create_with_value_and_read() {
-    let pin = LastStateDummyPin::new(true);
+    let mut pin = LastStateDummyPin::new(true);
     assert!(pin.is_high().unwrap());
 }
 

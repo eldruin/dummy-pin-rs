@@ -13,7 +13,7 @@
 //! A `DummyPin` does nothing and always returns the creation level when read.
 //!
 //! ```
-//! # use embedded_hal::digital::blocking::{InputPin, OutputPin, StatefulOutputPin, ToggleableOutputPin};
+//! # use embedded_hal::digital::{InputPin, OutputPin, StatefulOutputPin};
 //! use dummy_pin::DummyPin;
 //!
 //! // This pin will always read low.
@@ -38,7 +38,7 @@
 //!
 //! ```no_run
 //! use dummy_pin::DummyPin;
-//! use embedded_hal::digital::blocking::OutputPin;
+//! use embedded_hal::digital::OutputPin;
 //! use linux_embedded_hal::SysfsPin;
 //!
 //! struct Driver<P> {
@@ -73,7 +73,7 @@
 //! A `LastStateDummyPin` stores the last level set and returns it when read.
 //!
 //! ```
-//! # use embedded_hal::digital::blocking::{InputPin, OutputPin, StatefulOutputPin, ToggleableOutputPin};
+//! # use embedded_hal::digital::{InputPin, OutputPin, StatefulOutputPin};
 //! use dummy_pin::LastStateDummyPin;
 //!
 //! // Initially this pin reads low.
