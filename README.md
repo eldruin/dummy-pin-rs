@@ -19,7 +19,7 @@ This example demonstrates how the same driver can operate with either a real or 
 
 ```rust
 use dummy_pin::DummyPin;
-use embedded_hal::digital::blocking::OutputPin;
+use embedded_hal::digital::OutputPin;
 use linux_embedded_hal::SysfsPin;
 
 struct Driver<P> {
