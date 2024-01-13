@@ -10,7 +10,7 @@ keywords = ["io", "gpio", "dummy", "pin", "hal"]
 categories = ["embedded", "hardware-support", "no-std"]
 homepage = "https://github.com/eldruin/dummy-pin-rs"
 documentation = "https://docs.rs/dummy-pin"
-edition = "2018"
+edition = "2021"
 
 [dependencies]
 embedded-hal = "1.0.0"
