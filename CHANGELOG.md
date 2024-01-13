@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Updated `embedded-hal` to version `1.0.0`.
 
+### Fixed
+- Forbid creation of marker types.
+
 ## [0.2.0-alpha.1] - 2022-08-11
 
 ### Changed

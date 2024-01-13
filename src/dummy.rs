@@ -3,8 +3,11 @@ use embedded_hal::digital::{ErrorType, InputPin, OutputPin, StatefulOutputPin};
 
 /// Pin level marker types for usage of `DummyPin` as an `InputPin` or `StatefulOutputPin`.
 pub mod level {
+    #[non_exhaustive]
     /// `DummyPin` will always behave as being high when checked.
     pub struct High;
+
+    #[non_exhaustive]
     /// `DummyPin` will always behave as being low when checked.
     pub struct Low;
 }
