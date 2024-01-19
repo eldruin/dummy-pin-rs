@@ -11,6 +11,7 @@ categories = ["embedded", "hardware-support", "no-std"]
 homepage = "https://github.com/eldruin/dummy-pin-rs"
 documentation = "https://docs.rs/dummy-pin"
 edition = "2021"
+rust-version = "1.62.0"
 
 [dependencies]
 embedded-hal = "1.0.0"
