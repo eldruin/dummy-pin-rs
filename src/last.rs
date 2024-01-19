@@ -4,7 +4,7 @@ use embedded_hal::digital::{ErrorType, InputPin, OutputPin, StatefulOutputPin};
 /// Dummy pin implementation which stores the last level set to it and returns it when read.
 ///
 /// Note that this implementation is not zero-cost due to the need to update the level dynamically.
-#[derive(Debug, Clone, Copy)]
+#[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug)]
 pub struct LastStateDummyPin {
     is_high: bool,
 }

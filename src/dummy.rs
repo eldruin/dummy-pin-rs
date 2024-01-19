@@ -17,7 +17,7 @@ pub mod level {
 /// The implementation will discard any value written to it. When read,
 /// it will always behave according to the value provided at construction
 /// time (high or low).
-#[derive(Debug, Clone, Copy)]
+#[derive(Copy, Clone, Eq, PartialEq, Ord, PartialOrd, Hash, Debug)]
 pub struct DummyPin<L = level::Low> {
     _l: PhantomData<L>,
 }

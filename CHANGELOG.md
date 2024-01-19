@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 <!-- next-header -->
 ## [Unreleased] - ReleaseDate
 
+### Added
+- Derived common traits for types.
+
 ### Changed
 - Updated `embedded-hal` to version `1.0.0`.
 
